@@ -43,7 +43,12 @@ module.exports = {
     const { data, error } = await supabase
   .from('commands')
   .delete()
-  .match({ id: req.params.id })
+      .match({ id: req.params.id })
+    if (error) {
+      res.send(error)
+      return
+    }
+    res.send(data)
   }
   // spawn: async (req, res) => {
 
