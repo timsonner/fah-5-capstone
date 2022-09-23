@@ -10,15 +10,18 @@ const supabase = createClient(
 )
 
 module.exports = {
-    get: async (req, res) => {
-        try {
-            const { data: commands, error } = await supabase.from('commands').select('*')
-            console.log(commands)
-            res.status(200).send('get got')
-        } catch (error) {
-            console.log(error)
-        }
+    get: (req, res) => {
+        res.send('made it to controller')
     }
+    // get: async (req, res) => {
+    //     try {
+    //         const { data: commands, error } = await supabase.from('commands').select('*')
+    //         console.log(commands)
+    //         res.status(200).send('get got')
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
     // spawn: async (req, res) => {
 
     //     let output = ''

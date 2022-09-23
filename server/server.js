@@ -8,7 +8,6 @@ const {get} = require('./controller.js')
 app.use(express.json())
 app.use(cors())
 
-app.get('/get', get)
-// app.get(`/spawn`, spawn)
+app.get('/', get)
 
 app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
