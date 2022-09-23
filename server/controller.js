@@ -32,10 +32,11 @@ module.exports = {
   },
   insertCommand: async (req, res) => {
     try {
-      const { data, error } = await supabase
-      .from('commands')
-      .insert([{ id: uuidv4(), command: 'whoami'}])
-      res.status(200).send(commands)
+      // const { data, error } = await supabase
+      // .from('commands')
+      // .insert([{ id: uuidv4(), command: 'whoami'}])
+      // res.status(200).send(commands)
+      res.send(uuidv4())
     } catch (error) {
       
     }
