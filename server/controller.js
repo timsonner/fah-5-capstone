@@ -53,6 +53,19 @@ module.exports = {
       return
     }
     res.send(data)
+  },
+  updateCommand: async (req, res) => {
+    const { command } = req.body
+    const {id} = req.params
+    const { data, error } = await supabase
+  .from('cities')
+  .update({ command: command })
+      .match({ id: id })
+      if (error) {
+        res.send(error)
+        return
+      }
+      res.send(data)
   }
   // spawn: async (req, res) => {
 
