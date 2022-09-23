@@ -3,13 +3,11 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const {SERVER_PORT} = process.env
-// const {get} = require('./server/controller.js')
+const {get} = require('./server/controller.js')
 
 app.use(express.json())
 app.use(cors())
 
-app.get('/', (req, res) => {
-    res.send('Working')
-})
+app.get('/', get)
 
 app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
