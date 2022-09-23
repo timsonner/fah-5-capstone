@@ -10,7 +10,7 @@ const supabase = createClient(
 )
 
 module.exports = {
-    get: (req, res) => {
+    foo: (req, res) => {
         res.send('made it to controller')
     }
     // get: async (req, res) => {
