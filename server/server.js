@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const {SERVER_PORT} = process.env
-const { root, commands } = require('../controller.js')
+const { root, commands } = require('./controller.js')
 
 
 app.use(express.json())
