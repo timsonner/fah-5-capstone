@@ -20,24 +20,28 @@ module.exports = {
     }
   },
   getCommands: async (req, res) => {
-    try {
       const { data: commands, error } = await supabase
         .from('commands')
         .select('*')
       console.log(commands)
       res.status(200).send(commands)
-    } catch (error) {
-      console.log(error)
-    }
+      if (error) {
+        res.send(error)
+        return
+      }
+      res.send(data)
   },
   insertCommand: async (req, res) => {
     const { command } = req.body
-    try {
+    
       const { data, error } = await supabase
         .from('commands')
         .insert([{ id: uuidv4(), command: command }])
-      res.send(`post success`)
-    } catch (error) {}
+        if (error) {
+          res.send(error)
+          return
+        }
+        res.send(data)
   },
   deleteCommand: async (req, res) => {
     const { data, error } = await supabase
