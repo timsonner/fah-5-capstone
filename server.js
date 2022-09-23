@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
         try {
             const { data: commands, error } = await supabase.from('commands').select('*')
             console.log(commands)
-            res.status(200).send('commands')
+            res.status(200).send(commands)
         } catch (error) {
             console.log(error)
         }
