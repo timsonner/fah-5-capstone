@@ -4,13 +4,13 @@ const app = express()
 const cors = require('cors')
 const {SERVER_PORT} = process.env
 // const {foo} = require('./controller.js')
-const { createClient } = require('@supabase/supabase-js')
+// const { createClient } = require('@supabase/supabase-js')
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient(
-  process.env.URL,
-  process.env.ANON_KEY
-)
+// const supabase = createClient(
+//   process.env.URL,
+//   process.env.ANON_KEY
+// )
 
 app.use(express.json())
 app.use(cors())
