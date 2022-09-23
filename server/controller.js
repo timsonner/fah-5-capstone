@@ -31,19 +31,20 @@ module.exports = {
     }
   },
   insertCommand: async (req, res) => {
-    const {command} = req.body
+    const { command } = req.body
     try {
       const { data, error } = await supabase
-      .from('commands')
-        .insert([
-          {id: uuidv4(), command: command}
-        ])
-      // res.status(200).send(commands)
-      res.send(`post success}`)
-    } catch (error) {
-      
-    }
-}
+        .from('commands')
+        .insert([{ id: uuidv4(), command: command }])
+      res.send(`post success`)
+    } catch (error) {}
+  },
+  deleteCommand: async (req, res) => {
+    const { data, error } = await supabase
+  .from('commands')
+  .delete()
+  .match({ id: req.params.id })
+  }
   // spawn: async (req, res) => {
 
   //     let output = ''
