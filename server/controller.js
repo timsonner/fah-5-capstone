@@ -1,6 +1,8 @@
 require('dotenv').config();
 const { spawn } = require("child_process")
 const { createClient } = require('@supabase/supabase-js')
+const path = require('path')
+
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(
@@ -10,7 +12,12 @@ const supabase = createClient(
  
 module.exports = {
   root: (req, res) => {
-    res.send(`Okay, made it to controller`)
+    try {
+      res.status(200).sendFile(path.join(__dirname, '/public/index.html'))
+    } catch (error) {
+      console.log('error sending index.html', error)
+      res.sendStatus(400)
+    }
 },
  commands: async (req, res) => {
       try {
