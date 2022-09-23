@@ -2,6 +2,7 @@ require('dotenv').config()
 const { spawn } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const path = require('path')
+const { v4: uuidv4 } = require('uuid')
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(
@@ -30,9 +31,14 @@ module.exports = {
     }
   },
   insertCommand: async (req, res) => {
-    const { data, error } = await supabase
-    .from('commands')
-    .insert([{ name: 'whoami'}])
+    try {
+      const { data, error } = await supabase
+      .from('commands')
+      .insert([{ id: uuidv4(), command: 'whoami'}])
+      res.status(200).send(commands)
+    } catch (error) {
+      
+    }
 }
   // spawn: async (req, res) => {
 

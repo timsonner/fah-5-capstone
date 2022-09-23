@@ -78,6 +78,7 @@
     "unpipe": "^1.0.0",
     "utf-8-validate": "^5.0.9",
     "utils-merge": "^1.0.1",
+    "uuid": "^9.0.0",
     "vary": "^1.1.2",
     "webidl-conversions": "^3.0.1",
     "websocket": "^1.0.34",
