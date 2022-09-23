@@ -58,7 +58,7 @@ module.exports = {
     const { command } = req.body
     const {id} = req.params
     const { data, error } = await supabase
-  .from('cities')
+  .from('commands')
   .update({ command: command })
       .match({ id: id })
       if (error) {
