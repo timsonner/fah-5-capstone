@@ -1,13 +1,27 @@
 require('dotenv').config();
 const { spawn } = require("child_process")
+const { createClient } = require('@supabase/supabase-js')
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+)
  
-
-
 module.exports = {
-    foo: (req, res) => {
-        res.send('made it to controller')
-    }
-   
+  root: (req, res) => {
+    res.send(`Okay, made it to controller`)
+},
+ commands: async (req, res) => {
+      try {
+          const { data: commands, error } = await supabase.from('commands').select('*')
+          console.log(commands)
+          res.status(200).send(commands)
+      } catch (error) {
+          console.log(error)
+      }
+  },
+  
     // spawn: async (req, res) => {
 
     //     let output = ''
