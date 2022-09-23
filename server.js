@@ -4,13 +4,13 @@ const app = express()
 const cors = require('cors')
 const {SERVER_PORT} = process.env
 // const {foo} = require('./controller.js')
-// const { createClient } = require('@supabase/supabase-js')
+const { createClient } = require('@supabase/supabase-js')
 
 // Create a single supabase client for interacting with your database
-// const supabase = createClient(
-//   process.env.NEXT_PUBLIC_SUPABASE_URL,
-//   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-// )
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+)
 
 app.use(express.json())
 app.use(cors())
@@ -20,11 +20,13 @@ app.get('/', (req, res) => {
 })
 
  app.get('/commands', async (req, res) => {
-       
+        try {
             const { data: commands, error } = await supabase.from('commands').select('*')
             console.log(commands)
             res.status(200).send('commands')
-        
+        } catch (error) {
+            console.log(error)
+        }
     })
 
 app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
