@@ -8,6 +8,8 @@ const {foo} = require('./controller.js')
 app.use(express.json())
 app.use(cors())
 
-app.get('/', foo)
+app.get('/', (req, res) => {
+    res.send(`Okay, we're doing it this way`)
+})
 
 app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
