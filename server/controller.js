@@ -18,6 +18,14 @@ module.exports = {
       res.sendStatus(400)
     }
   },
+  main: (req, res) => {
+    try {
+      res.status(200).sendFile(path.join(__dirname, '/public/main.js'))
+    } catch (error) {
+      console.log('error sending main.js', error)
+      res.sendStatus(400)
+    }
+  },
   getCommands: async (req, res) => {
       const { data: commands, error } = await supabase
         .from('commands')
