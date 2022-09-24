@@ -3,10 +3,11 @@ const baseURL = `http://localhost:4004/commands`
 const getCommands = async () => {
   try {
     let res = await axios.get(baseURL)
-    res.data.forEach((element) => {
-      // create view using element
-    })
+    // res.data.forEach((element) => {
+    //   // create view using element
+    // })
     console.log(`🟢 getCommands()`)
+    //   return res.data
   } catch (error) {
     console.log(`🔴 getCommands(): ${error}`)
   }
