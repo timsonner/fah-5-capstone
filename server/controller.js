@@ -84,7 +84,8 @@ module.exports = {
 
           systemCall.stdout.on(`data`, (data) => {
               output += data
-              console.log(`stdout: ${data}`)
+            console.log(`stdout: ${data}`)
+            res.send(output)
           })
 
           systemCall.stderr.on(`data`, (data) => {
@@ -95,13 +96,13 @@ module.exports = {
               console.log(`child process exited with code ${code}`)
           })
       }
-      try {
-        console.log(output)
-        res.send(output)
-      } catch (error) {
-        console.log(error)
-        res.send(error)
-      }
+      // try {
+      //   console.log(output)
+      //   res.send(output)
+      // } catch (error) {
+      //   console.log(error)
+      //   res.send(error)
+      // }
     
   makeSystemCall('ls')
 
