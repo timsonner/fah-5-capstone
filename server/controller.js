@@ -95,9 +95,7 @@ module.exports = {
               console.log(`child process exited with code ${code}`)
           })
       }
-
       try {
-          const { data: commands, error } = await supabase.from('commands').select('*')
           console.log(commands)
       } catch (error) {
           console.log(error)
