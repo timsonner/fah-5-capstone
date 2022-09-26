@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const { SERVER_PORT } = process.env
-const { root, main, makeSystemCall, getCommands, insertCommand, deleteCommand, updateCommand,} = require('./controller.js')
+const { root, main, spawn, getCommands, insertCommand, deleteCommand, updateCommand,} = require('./controller.js')
 
 // meedleware didi
 app.use(express.json())
@@ -12,7 +12,7 @@ app.use(cors())
 // routes
 app.get('/', root)
 app.get('/main', main)
-app.get('/spawn', makeSystemCall)
+app.get('/spawn', spawn)
 app.get('/commands', getCommands)
 app.post('/commands', insertCommand)
 app.delete('/commands/:id', deleteCommand)

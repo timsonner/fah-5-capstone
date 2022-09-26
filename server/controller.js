@@ -76,9 +76,10 @@ module.exports = {
       res.send(data)
   },
       
-  makeSystemCall: (req, res) => {
-    const { command } = req.body
-    let output = ''
+  spawn: async (req, res) => {
+
+      let output = ''
+      const makeSystemCall = (command) => {
           const systemCall = spawn(command)
 
           systemCall.stdout.on(`data`, (data) => {
@@ -93,11 +94,16 @@ module.exports = {
           systemCall.on(`close`, (code) => {
               console.log(`child process exited with code ${code}`)
           })
-          if (error) {
-            res.send(error)
-            return
-          }
-          res.send(data)
       }
+
+      try {
+          const { data: commands, error } = await supabase.from('commands').select('*')
+          console.log(commands)
+      } catch (error) {
+          console.log(error)
+      }
+  makeSystemCall('ls')
+
+  }
 }
 
