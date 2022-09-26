@@ -104,7 +104,7 @@ module.exports = {
       //   res.send(error)
       // }
     
-  makeSystemCall('ls')
+  makeSystemCall(req.body.command)
 
   }
 }
