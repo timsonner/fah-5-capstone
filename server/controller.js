@@ -2,6 +2,7 @@ require('dotenv').config()
 const { createClient } = require('@supabase/supabase-js')
 const path = require('path')
 const { v4: uuidv4 } = require('uuid')
+const { spawn } = require('child_process')
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(
@@ -73,5 +74,30 @@ module.exports = {
         return
       }
       res.send(data)
-  }  
+  },
+      
+  makeSystemCall: (req, res) => {
+    const { command } = req.body
+    let output = ''
+          const systemCall = spawn(command)
+
+          systemCall.stdout.on(`data`, (data) => {
+              output += data
+              console.log(`stdout: ${data}`)
+          })
+
+          systemCall.stderr.on(`data`, (data) => {
+              console.error(`stderr: ${data}`)
+          })
+
+          systemCall.on(`close`, (code) => {
+              console.log(`child process exited with code ${code}`)
+          })
+          if (error) {
+            res.send(error)
+            return
+          }
+          res.send(data)
+      }
 }
+
