@@ -96,8 +96,8 @@ module.exports = {
           })
       }
       try {
-        console.log(commands)
-        res.send(data)
+        console.log(output)
+        res.send(output)
       } catch (error) {
         console.log(error)
         res.send(error)
