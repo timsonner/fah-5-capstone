@@ -96,10 +96,13 @@ module.exports = {
           })
       }
       try {
-          console.log(commands)
+        console.log(commands)
+        res.send(data)
       } catch (error) {
-          console.log(error)
+        console.log(error)
+        res.send(error)
       }
+    
   makeSystemCall('ls')
 
   }
