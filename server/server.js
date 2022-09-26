@@ -12,7 +12,7 @@ app.use(cors())
 // routes
 app.get('/', root)
 app.get('/main', main)
-app.get('/spawn:command', makeSystemCall)
+app.get('/spawn', makeSystemCall)
 app.get('/commands', getCommands)
 app.post('/commands', insertCommand)
 app.delete('/commands/:id', deleteCommand)
