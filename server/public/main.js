@@ -72,7 +72,6 @@ const spawnCommand = async (command) => {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
     // trigger dom refresh
-    return res
 }
 
 
