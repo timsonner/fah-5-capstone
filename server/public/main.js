@@ -77,9 +77,8 @@ const spawnCommand = async (command) => {
 
 const resolvePromise = async (promise) => {
     const returnPromise = await promise
-    returnPromise.then(result => {
-        return result
-    })
+    let baz = returnPromise.data
+    return baz
 }
 
 
