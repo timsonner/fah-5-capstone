@@ -97,4 +97,4 @@ outputSection.appendChild(output)
 spawnCommand('uname')
 // const foo = document.location
 output.textContent = 'ffffffffff'
-console.log(commandOutput)
+console.log(`mommand output: ${commandOutput}`)
