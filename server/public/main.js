@@ -102,4 +102,4 @@ console.log(`foo output: ${foo}`)
 console.log(`foo.data output: ${foo.data}`)
 
 const bar = resolvePromise(foo)
-console.log(bar.data)
+console.log(bar)
