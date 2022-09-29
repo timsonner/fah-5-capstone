@@ -77,7 +77,7 @@ const spawnCommand = async (command) => {
 
 const resolvePromise = async (promise) => {
     const returnPromise = await promise
-    return returnPromise.data
+    return returnPromise
 }
 
 
@@ -102,4 +102,4 @@ console.log(`foo output: ${foo}`)
 console.log(`foo.data output: ${foo.data}`)
 
 const bar = resolvePromise(foo)
-console.log(bar)
+console.log(bar.data)
