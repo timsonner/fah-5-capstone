@@ -68,7 +68,7 @@ const spawnCommand = async (command) => {
   try {
     const res = await axios.post(`${baseURL}spawn`, object)
       console.log(`🟢 spawnCommand(): ${res.data}`)
-      return res.data
+      return res
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
