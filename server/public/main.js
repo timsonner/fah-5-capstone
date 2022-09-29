@@ -96,4 +96,4 @@ const output = document.createElement('h3')
 outputSection.appendChild(output)
 spawnCommand('uname')
 // const foo = document.location
-output.textContent = commandOutput
+output.textContent = 'ffffffffff'
