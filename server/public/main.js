@@ -1,4 +1,4 @@
-const baseURL = `https://localhost/`
+const baseURL = document.location
 
 const getCommands = async () => {
   try {
@@ -91,6 +91,6 @@ const outputSection = document.createElement('section')
 docBody.appendChild(outputSection)
 const output = document.createElement('h3')
 outputSection.appendChild(output)
-// const foo = spawnCommand('uname')
-const foo = document.location
+const foo = spawnCommand('uname')
+// const foo = document.location
 output.textContent = foo
