@@ -94,4 +94,4 @@ const output = document.createElement('h3')
 outputSection.appendChild(output)
 const foo = spawnCommand('uname')
 // const foo = document.location
-output.textContent = foo
+output.textContent = `${foo.data}`
