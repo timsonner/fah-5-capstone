@@ -1,6 +1,4 @@
-const { SERVER_PORT } = process.env
-
-const baseURL = `http://localhost:${SERVER_PORT}/`
+const baseURL = `https://localhost/`
 
 const getCommands = async () => {
   try {
