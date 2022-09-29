@@ -68,11 +68,11 @@ const spawnCommand = async (command) => {
   try {
     const res = await axios.post(`${baseURL}spawn`, object)
       console.log(`🟢 spawnCommand()`)
-      return res
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
     // trigger dom refresh
+    return res
 }
 
 
