@@ -97,3 +97,5 @@ const foo = spawnCommand('uname')
 output.textContent = 'ffffffffff'
 console.log(`foo output: ${foo}`)
 console.log(`foo.data output: ${foo.data}`)
+const bar = await foo
+console.log(`bar: ${bar}`)
