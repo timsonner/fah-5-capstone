@@ -103,6 +103,4 @@ console.log(`foo.data output: ${foo.data}`)
 
 const bar = resolvePromise(foo)
 console.log(bar)
-bar.then(() => {
-    console.log(`then: ${bar.data}`)
-})
+
