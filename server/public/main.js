@@ -68,7 +68,7 @@ const spawnCommand = async (command) => {
   try {
     const res = await axios.post(`${baseURL}spawn`, object)
       console.log(`🟢 spawnCommand(): ${res.data}`)
-      return res
+      return res.data
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
@@ -77,7 +77,7 @@ const spawnCommand = async (command) => {
 
 const resolvePromise = async (promise) => {
     const returnPromise = await promise
-    return returnPromise
+    return returnPromise.data
 }
 
 
@@ -102,4 +102,4 @@ console.log(`foo output: ${foo}`)
 console.log(`foo.data output: ${foo.data}`)
 
 const bar = resolvePromise(foo)
-console.log(bar.data)
+console.log(bar)
