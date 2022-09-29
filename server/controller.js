@@ -77,7 +77,7 @@ module.exports = {
   },
       
   spawn: async (req, res) => {
-
+const { command } =  req.body
       let output = ''
       const makeSystemCall = (command) => {
           const systemCall = spawn(command)
@@ -104,7 +104,7 @@ module.exports = {
       //   res.send(error)
       // }
     
-  makeSystemCall(req.body.command)
+  makeSystemCall(command)
 
   }
 }

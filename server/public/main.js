@@ -1,4 +1,4 @@
-const baseURL = `http://localhost:4004/commands`
+const baseURL = `http://localhost:4004/`
 
 const getCommands = async () => {
   try {
@@ -61,6 +61,19 @@ const delCommand = async (id) => {
     // trigger dom refresh
 }
 
+const spawnCommand = async (command) => {
+    const object = {
+        command: command
+    }
+  try {
+    const res = await axios.post(`${baseURL}spawn`, object)
+    console.log(`🟢 spawnCommand()`)
+  } catch (error) {
+    console.log(`🔴 spawnCommand(): ${error}`)
+  }
+    // trigger dom refresh
+}
+
 
 
 
@@ -74,3 +87,9 @@ const heading = document.createElement('h2')
 heading.textContent = 'FAH-5-Capstone'
 heading.classList.add("text-green-500", "font-thin")
 section.appendChild(heading)
+const outputSection = document.createElement('section')
+docBody.appendChild(outputSection)
+const output = document.createElement('h3')
+outputSection.appendChild(output)
+const foo = spawnCommand('uname')
+output.textContent = foo
