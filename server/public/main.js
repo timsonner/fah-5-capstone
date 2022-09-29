@@ -75,7 +75,10 @@ const spawnCommand = async (command) => {
     // trigger dom refresh
 }
 
-
+const resolvePromise = async (promise) => {
+    const returnPromise = await promise
+    return returnPromise
+}
 
 
 
@@ -97,5 +100,6 @@ const foo = spawnCommand('uname')
 output.textContent = 'ffffffffff'
 console.log(`foo output: ${foo}`)
 console.log(`foo.data output: ${foo.data}`)
-const bar = await foo
-console.log(`bar: ${bar}`)
+
+const bar = resolvePromise(foo)
+console.log(bar)
