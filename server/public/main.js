@@ -61,8 +61,6 @@ const delCommand = async (id) => {
     // trigger dom refresh
 }
 
-let commandOutput = ``
-
 const spawnCommand = async (command) => {
     const object = {
         command: command
@@ -70,7 +68,7 @@ const spawnCommand = async (command) => {
   try {
     const res = await axios.post(`${baseURL}spawn`, object)
       console.log(`🟢 spawnCommand(): ${res.data}`)
-      commandOutput = `GGGGGG`
+      return res
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
@@ -94,7 +92,8 @@ const outputSection = document.createElement('section')
 docBody.appendChild(outputSection)
 const output = document.createElement('h3')
 outputSection.appendChild(output)
-spawnCommand('uname')
+const foo = spawnCommand('uname')
 // const foo = document.location
 output.textContent = 'ffffffffff'
-console.log(`mommand output: ${commandOutput}`)
+console.log(`foo output: ${foo}`)
+console.log(`foo.data output: ${foo.data}`)
