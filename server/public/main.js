@@ -68,6 +68,7 @@ const spawnCommand = async (command) => {
   try {
     const res = await axios.post(`${baseURL}spawn`, object)
       console.log(`🟢 spawnCommand(): ${res.data}`)
+      return res.data
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
@@ -93,4 +94,4 @@ const output = document.createElement('h3')
 outputSection.appendChild(output)
 const foo = spawnCommand('uname')
 // const foo = document.location
-output.textContent = foo.data
+output.textContent = foo
