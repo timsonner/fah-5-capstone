@@ -31,13 +31,13 @@ module.exports = {
       const { commands, error } = await supabase
         .from('commands')
         .select('*')
-      console.log(commands)
-      res.status(200).send(commands)
+        res.status(200).send(commands)
       if (error) {
         res.send(error)
         return
       }
-    res.send(JSON.stringify(commands))
+    console.log(commands)
+    res.status(200).send(commands)
     // res.status(200).send(commands)
 
   },
