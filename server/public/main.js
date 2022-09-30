@@ -80,7 +80,7 @@ const getCommands = async () => {
     //       commandList.appendChild(commandListItem)
     //       commandListItem.textContent = JSON.stringify(element.data)
     //   })
-      console.log(`🟢 getCommands(): ${JSON.stringify(res)}`)
+      console.log(`🟢 getCommands(): ${res}`)
       //   return res.data
     } catch (error) {
       console.log(`🔴 getCommands(): ${error}`)

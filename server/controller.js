@@ -28,7 +28,7 @@ module.exports = {
     }
   },
   getCommands: async (req, res) => {
-      const { data: commands, error } = await supabase
+      const { commands, error } = await supabase
         .from('commands')
         .select('*')
       console.log(commands)
@@ -37,7 +37,9 @@ module.exports = {
         res.send(error)
         return
       }
-      res.send(commands)
+    // res.send(data)
+    // res.status(200).send(commands)
+
   },
   insertCommand: async (req, res) => {
     const { command } = req.body
