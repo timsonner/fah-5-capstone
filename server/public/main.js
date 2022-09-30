@@ -61,7 +61,7 @@ const delCommand = async (id) => {
     // trigger dom refresh
 }
 
-let commandOutput = ''
+var commandOutput = ''
 const spawnCommand = async (command) => {
     const object = {
         command: command
@@ -71,6 +71,7 @@ const spawnCommand = async (command) => {
       console.log(`🟢 spawnCommand(): ${res.data}`)
       console.log(`typof: ${typeof (res.data)}`)
       commandOutput = res.data
+      return res.data
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
@@ -106,3 +107,4 @@ console.log(`foo.data output: ${foo.data}`)
 const bar = resolvePromise(foo)
 console.log(`bar: ${bar}`)
 console.log(`commandOutput: ${commandOutput}`)
+
