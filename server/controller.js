@@ -32,7 +32,7 @@ module.exports = {
         .from('commands')
         .select('*')
     console.log(commands)
-    res.status(200).send(commands)
+    res.send(commands)
       if (error) {
         res.send(error)
         return
