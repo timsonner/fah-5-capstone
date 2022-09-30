@@ -31,7 +31,8 @@ module.exports = {
       const { data, error } = await supabase
         .from('commands')
         .select('*')
-        res.send(data)
+    console.log(data)
+    res.status(200).send(data)
       if (error) {
         res.send(error)
         return
