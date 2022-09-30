@@ -1,17 +1,6 @@
 const baseURL = document.location
 
-const getCommands = async () => {
-  try {
-    let res = await axios.get(baseURL)
-    // res.data.forEach((element) => {
-    //   // create view using element
-    // })
-    console.log(`🟢 getCommands()`)
-    //   return res.data
-  } catch (error) {
-    console.log(`🔴 getCommands(): ${error}`)
-  }
-}
+
 
 const postCommand = async (command) => {
     const object = {
@@ -60,20 +49,46 @@ const delCommand = async (id) => {
   }
     // trigger dom refresh
 }
-
+// document body
 const docBody = document.querySelector('body')
 docBody.classList.add("flex", "flex-row", "justify-center", "font-mono")
-const section = document.createElement('section')
-section.classList.add("flex", "justify-center", "bg-black", "px-8")
-docBody.appendChild(section)
+// heading section
+const headingSection = document.createElement('section')
+headingSection.classList.add("flex", "flex-col", "justify-center", "bg-black", "px-8")
+docBody.appendChild(headingSection)
 const heading = document.createElement('h2')
 heading.textContent = 'FAH-5-Capstone'
 heading.classList.add("text-green-500", "font-thin")
-section.appendChild(heading)
+headingSection.appendChild(heading)
+// output section
 const outputSection = document.createElement('section')
 docBody.appendChild(outputSection)
 const output = document.createElement('h3')
 outputSection.appendChild(output)
+// commandList section
+const commandListSection = document.createElement('section')
+docBody.appendChild(commandListSection)
+const commandList = document.createElement('ul')
+commandListSection.appendChild(commandList)
+
+const getCommands = async () => {
+    try {
+      let res = await axios.get(baseURL)
+      res.data.forEach((element) => {
+        // create view using element
+        const commandListItem = document.createElement('li')
+          commandList.appendChild(commandListItem)
+          commandListItem.textContent = JSON.stringify(element)
+      })
+      console.log(`🟢 getCommands()`)
+      //   return res.data
+    } catch (error) {
+      console.log(`🔴 getCommands(): ${error}`)
+    }
+  }
+
+getCommands()
+
 
 const spawnCommand = async (command) => {
     const object = {
