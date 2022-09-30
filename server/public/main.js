@@ -61,27 +61,12 @@ const delCommand = async (id) => {
     // trigger dom refresh
 }
 
-var commandOutput = ''
-const spawnCommand = async (command) => {
-    const object = {
-        command: command
-    }
-  try {
-      const res = await axios.post(`${baseURL}spawn`, object)
-      console.log(`🟢 spawnCommand(): ${res.data}`)
-      console.log(`typof: ${typeof (res.data)}`)
-      commandOutput = res.data
-      return res.data
-  } catch (error) {
-    console.log(`🔴 spawnCommand(): ${error}`)
-  }
-    // trigger dom refresh
-}
 
-const resolvePromise = async (promise) => {
-    const returnPromise = await promise.data
-    return returnPromise
-}
+
+// const resolvePromise = async (promise) => {
+//     const returnPromise = await promise.data
+//     return returnPromise
+// }
 
 
 
@@ -100,10 +85,8 @@ const output = document.createElement('h3')
 outputSection.appendChild(output)
 
 
-const foo = spawnCommand('uname')
-const fml = resolvePromise(foo)
+
 // const foo = document.location
-output.textContent = `${fml}`
 
 // console.log(`foo output: ${foo}`)
 // console.log(`foo.data output: ${foo.data}`)
@@ -112,3 +95,21 @@ output.textContent = `${fml}`
 // console.log(`bar: ${bar}`)
 console.log(`commandOutput: ${commandOutput}`)
 
+var commandOutput = ''
+const spawnCommand = async (command) => {
+    const object = {
+        command: command
+    }
+  try {
+      const res = await axios.post(`${baseURL}spawn`, object)
+      console.log(`🟢 spawnCommand(): ${res.data}`)
+      console.log(`typof: ${typeof (res.data)}`)
+      output.textContent = `${res.data}`
+      return res.data
+  } catch (error) {
+    console.log(`🔴 spawnCommand(): ${error}`)
+  }
+    // trigger dom refresh
+}
+
+const foo = spawnCommand('uname')
