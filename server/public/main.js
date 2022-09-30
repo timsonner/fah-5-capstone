@@ -61,7 +61,7 @@ const delCommand = async (id) => {
     // trigger dom refresh
 }
 
-let commandOutput
+let commandOutput = ''
 const spawnCommand = async (command) => {
     const object = {
         command: command
@@ -69,7 +69,8 @@ const spawnCommand = async (command) => {
   try {
       const res = await axios.post(`${baseURL}spawn`, object)
       console.log(`🟢 spawnCommand(): ${res.data}`)
-      console.log(`typof: ${typeof(res.data)}`)
+      console.log(`typof: ${typeof (res.data)}`)
+      commandOutput = res.data
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
