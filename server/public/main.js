@@ -78,10 +78,10 @@ const spawnCommand = async (command) => {
     // trigger dom refresh
 }
 
-const resolvePromise = async (promise) => {
-    const returnPromise = await promise
-    return returnPromise
-}
+// const resolvePromise = async (promise) => {
+//     const returnPromise = await promise
+//     return returnPromise
+// }
 
 
 
@@ -100,11 +100,12 @@ const output = document.createElement('h3')
 outputSection.appendChild(output)
 const foo = spawnCommand('uname')
 // const foo = document.location
-output.textContent = 'ffffffffff'
-console.log(`foo output: ${foo}`)
-console.log(`foo.data output: ${foo.data}`)
+output.textContent = `${foo}`
 
-const bar = resolvePromise(foo)
-console.log(`bar: ${bar}`)
+// console.log(`foo output: ${foo}`)
+// console.log(`foo.data output: ${foo.data}`)
+
+// const bar = resolvePromise(foo)
+// console.log(`bar: ${bar}`)
 console.log(`commandOutput: ${commandOutput}`)
 
