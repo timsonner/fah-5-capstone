@@ -28,11 +28,11 @@ module.exports = {
     }
   },
   getCommands: async (req, res) => {
-      const { data, error } = await supabase
+      const { commands, error } = await supabase
         .from('commands')
         .select('*')
-    console.log(data)
-    res.status(200).send(data)
+    console.log(commands)
+    res.status(200).send(commands)
       if (error) {
         res.send(error)
         return
