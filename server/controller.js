@@ -37,7 +37,7 @@ module.exports = {
         res.send(error)
         return
       }
-      res.send(data)
+      res.send(commands)
   },
   insertCommand: async (req, res) => {
     const { command } = req.body
