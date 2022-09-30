@@ -61,15 +61,6 @@ const delCommand = async (id) => {
     // trigger dom refresh
 }
 
-
-
-// const resolvePromise = async (promise) => {
-//     const returnPromise = await promise.data
-//     return returnPromise
-// }
-
-
-
 const docBody = document.querySelector('body')
 docBody.classList.add("flex", "flex-row", "justify-center", "font-mono")
 const section = document.createElement('section')
@@ -84,18 +75,6 @@ docBody.appendChild(outputSection)
 const output = document.createElement('h3')
 outputSection.appendChild(output)
 
-
-
-// const foo = document.location
-
-// console.log(`foo output: ${foo}`)
-// console.log(`foo.data output: ${foo.data}`)
-
-// const bar = resolvePromise(foo)
-// console.log(`bar: ${bar}`)
-console.log(`commandOutput: ${commandOutput}`)
-
-var commandOutput = ''
 const spawnCommand = async (command) => {
     const object = {
         command: command
