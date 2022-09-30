@@ -61,6 +61,7 @@ const delCommand = async (id) => {
     // trigger dom refresh
 }
 
+let commandOutput
 const spawnCommand = async (command) => {
     const object = {
         command: command
@@ -69,6 +70,9 @@ const spawnCommand = async (command) => {
     const res = await axios.post(`${baseURL}spawn`, object)
       console.log(`🟢 spawnCommand(): ${res.data}`)
       return res
+          .then(() => {
+          commandOutput = res.data
+      })
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
@@ -102,5 +106,5 @@ console.log(`foo output: ${foo}`)
 console.log(`foo.data output: ${foo.data}`)
 
 const bar = resolvePromise(foo)
-console.log(bar)
-
+console.log(`bar: ${bar}`)
+console.log(`commandOutput: ${commandOutput}`)
