@@ -37,8 +37,8 @@ module.exports = {
         res.send(error)
         return
       }
-    console.log(data)
-    res.send(data)
+    // console.log(data)
+    // res.send(data)
     // res.status(200).send(commands)
 
   },
