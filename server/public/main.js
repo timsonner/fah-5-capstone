@@ -74,12 +74,12 @@ commandListSection.appendChild(commandList)
 const getCommands = async () => {
     try {
       let res = await axios.get(`${baseURL}commands`)
-    //   res.forEach((element) => {
-    //     // create view using element
-    //     const commandListItem = document.createElement('li')
-    //       commandList.appendChild(commandListItem)
-    //       commandListItem.textContent = JSON.stringify(element.data)
-    //   })
+      res.data.forEach((element) => {
+        // create view using element
+        const commandListItem = document.createElement('li')
+          commandList.appendChild(commandListItem)
+          commandListItem.textContent = JSON.stringify(element.command)
+      })
         console.log(`🟢 getCommands(): ${res.data}`)
         console.table(res.data)
       //   return res.data
