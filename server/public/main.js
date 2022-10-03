@@ -51,7 +51,7 @@ const delCommand = async (id) => {
 }
 // document body
 const docBody = document.querySelector('body')
-docBody.classList.add("flex", "flex-row", "justify-center", "font-mono")
+docBody.classList.add("flex", "flex-col", "justify-center", "font-mono")
 // heading section
 const headingSection = document.createElement('section')
 headingSection.classList.add("flex", "flex-col", "justify-center", "bg-black", "px-8")
