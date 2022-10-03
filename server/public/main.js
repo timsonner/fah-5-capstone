@@ -75,9 +75,13 @@ commandInputAdd.setAttribute("placeholder", "Add a command")
 const buttonAdd = document.createElement('button')
 commandListSection.appendChild(buttonAdd)
 buttonAdd.setAttribute("textContent", "Add")
+buttonAdd.setAttribute("clientheight", "18")
 const commandList = document.createElement('ul')
 commandListSection.appendChild(commandList)
 commandListSection.classList.add("bg-gray-400")
+const testCommandInput = document.createElement('p')
+commandListSection.appendChild(testCommandInput)
+testCommandInput.setAttribute("textContent", `${commandInputAdd.value}`)
 
 const getCommands = async () => {
     try {
@@ -116,3 +120,4 @@ const spawnCommand = async (command) => {
 }
 
 const foo = spawnCommand('uname')
+
