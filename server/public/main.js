@@ -74,12 +74,17 @@ commandListSection.appendChild(commandInputAdd)
 commandInputAdd.setAttribute("placeholder", "Add a command")
 const buttonAdd = document.createElement('button')
 commandListSection.appendChild(buttonAdd)
-buttonAdd.setAttribute("textContent", "Add")
-buttonAdd.setAttribute("height", "18")
+buttonAdd.setAttribute("value", "Add")
 const commandList = document.createElement('ul')
 commandListSection.appendChild(commandList)
 commandListSection.classList.add("bg-gray-400")
-console.log(`value: ${commandInputAdd.value}`)
+
+const logValue = (e) => {
+    console.log(`value: ${commandInputAdd.value}`)
+}
+
+buttonAdd.addEventListener('click', logValue)
+
 console.log(`textcontent: ${commandInputAdd.textContent}`)
 
 
