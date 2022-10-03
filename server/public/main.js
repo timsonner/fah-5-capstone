@@ -74,7 +74,7 @@ commandListSection.appendChild(commandInputAdd)
 commandInputAdd.setAttribute("placeholder", "Add a command")
 const buttonAdd = document.createElement('button')
 commandListSection.appendChild(buttonAdd)
-buttonAdd.setAttribute("value", "Add")
+buttonAdd.value = "Add"
 const commandList = document.createElement('ul')
 commandListSection.appendChild(commandList)
 commandListSection.classList.add("bg-gray-400")
