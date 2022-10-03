@@ -65,11 +65,13 @@ const outputSection = document.createElement('section')
 docBody.appendChild(outputSection)
 const output = document.createElement('h3')
 outputSection.appendChild(output)
+outputSection.classList.add("bg-blue-400")
 // commandList section
 const commandListSection = document.createElement('section')
 docBody.appendChild(commandListSection)
 const commandList = document.createElement('ul')
 commandListSection.appendChild(commandList)
+commandListSection.classList.add("bg-gray-400")
 
 const getCommands = async () => {
     try {
