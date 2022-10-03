@@ -75,13 +75,13 @@ commandInputAdd.setAttribute("placeholder", "Add a command")
 const buttonAdd = document.createElement('button')
 commandListSection.appendChild(buttonAdd)
 buttonAdd.setAttribute("textContent", "Add")
-buttonAdd.setAttribute("clientheight", "18")
+buttonAdd.setAttribute("height", "18")
 const commandList = document.createElement('ul')
 commandListSection.appendChild(commandList)
 commandListSection.classList.add("bg-gray-400")
-const testCommandInput = document.createElement('p')
-commandListSection.appendChild(testCommandInput)
-testCommandInput.setAttribute("textContent", `${commandInputAdd.value}`)
+console.log(`value: ${commandInputAdd.value}`)
+console.log(`textcontent: ${commandInputAdd.textContent}`)
+
 
 const getCommands = async () => {
     try {
