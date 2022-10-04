@@ -67,32 +67,27 @@ const spawnCommand = async (command) => {
   try {
     const res = await axios.post(`${baseURL}spawn`, object)
     console.log(`🟢 spawnCommand(): ${res.data}`)
-    console.log(`typof: ${typeof res.data}`)
+    console.log(`typeof: ${typeof res.data}`)
     // this is where data is reflected in the view
-      output.textContent += `${res.data}`
-      
+      output.textContent += `${res.data}\r\n`
+    
     return res.data
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
-  // trigger dom refresh
-}
-
-const logValue = (event) => {
-  // console.log(`value: ${commandInputAdd.value}`)
 }
 
 const postCommand = async () => {
   try {
     const url = baseURL + 'commands'
     const res = await axios.post(url, { command: commandInputAdd.value })
-    console.log(`🟢 postCommand()`)
+      console.log(`🟢 postCommand()`)
+        // trigger dom refresh
     commandList.innerHTML = ''
     getCommands()
   } catch (error) {
     console.log(`🔴 postCommand(${error})`)
   }
-  // trigger dom refresh
 }
 buttonAdd.addEventListener('click', postCommand)
 
@@ -102,7 +97,7 @@ const getCommands = async () => {
     commandList.innerHTML = ''
     let res = await axios.get(`${baseURL}commands`)
     res.data.forEach((element) => {
-      // create view using element
+      // create view
       const commandListItem = document.createElement('li')
       commandList.appendChild(commandListItem)
       commandListItem.textContent = element.command
