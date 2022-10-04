@@ -84,7 +84,9 @@ const postCommand = async () => {
   try {
     const url = baseURL + 'commands'
     const res = await axios.post(url, { command: commandInputAdd.value })
-    console.log(`🟢 postCommand()`)
+      console.log(`🟢 postCommand()`)
+      commandList.innerHTML = ""
+getCommands()
   } catch (error) {
     console.log(`🔴 postCommand(${error})`)
   }
@@ -108,7 +110,9 @@ const getCommands = async () => {
       commandList.appendChild(buttonDeleteCommand)
       buttonDeleteCommand.textContent = 'Delete'
       const delHelper = () => {
-        delCommand(element.id)
+          delCommand(element.id)
+          commandList.innerHTML = ""
+getCommands()
       }
         buttonDeleteCommand.addEventListener('click', delHelper)
         const inputEditCommand = document.createElement('input')
