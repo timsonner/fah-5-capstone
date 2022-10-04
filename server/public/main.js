@@ -93,7 +93,7 @@ commandListSection.classList.add("bg-gray-400")
 
 const logValue = (event) => {
     // console.log(`value: ${commandInputAdd.value}`)
-    console.log(event.currentTarget.command)
+    console.log(event.command)
 }
 
 buttonAdd.addEventListener('click', logValue)
