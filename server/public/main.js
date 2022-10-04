@@ -31,7 +31,7 @@ const postCommand = async (command) => {
 
 const putCommand = async (id, command) => {
   try {
-    const url = baseURL + '/' + id
+    const url = baseURL + id
     const res = await axios.put(url, { command: command })
     console.log(`🟢 putCommand()`)
   } catch (error) {
@@ -39,6 +39,17 @@ const putCommand = async (id, command) => {
   }
     // trigger dom refresh
 }
+
+// const putCommand = async (id, command) => {
+//     try {
+//       const url = baseURL + id
+//       const res = await axios.put(url, { command: command })
+//       console.log(`🟢 putCommand()`)
+//     } catch (error) {
+//       console.log(`🔴 putCommand(${error})`)
+//     }
+//       // trigger dom refresh
+//   }
 const delCommand = async (id) => {
   try {
     const url = baseURL + '/' + id
@@ -69,6 +80,7 @@ outputSection.classList.add("bg-blue-400")
 // commandList section
 const commandListSection = document.createElement('section')
 docBody.appendChild(commandListSection)
+// add a command
 const commandInputAdd = document.createElement('input')
 commandListSection.appendChild(commandInputAdd)
 commandInputAdd.setAttribute("placeholder", "Add a command")
@@ -79,11 +91,13 @@ const commandList = document.createElement('ul')
 commandListSection.appendChild(commandList)
 commandListSection.classList.add("bg-gray-400")
 
-const logValue = (e) => {
-    console.log(`value: ${commandInputAdd.value}`)
+const logValue = (event) => {
+    // console.log(`value: ${commandInputAdd.value}`)
+    console.log(event.currentTarget.command)
 }
 
 buttonAdd.addEventListener('click', logValue)
+buttonAdd.command = commandInputAdd.value
 
 console.log(`textcontent: ${commandInputAdd.textContent}`)
 
