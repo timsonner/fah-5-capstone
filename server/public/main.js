@@ -1,36 +1,5 @@
 const baseURL = document.location
 
-
-
-const postCommand = async (command) => {
-    const object = {
-        id: uuidv4(),
-        command: command
-    }
-  try {
-    const res = await axios.post(baseURL, object)
-    console.log(`🟢 postCommand()`)
-  } catch (error) {
-    console.log(`🔴 postCommand(): ${error}`)
-  }
-  location.reload()
-}
-
-const helperPostCommand = () => {
-  const object = {
-    // id: uuidv4(),
-    
-  }
-  try {
-    postCommand(object)
-    console.log(`🟢 helperPostCommand()`)
-  } catch (error) {
-    console.log(`🔴 helperPostCommand(): ${error}`)
-  }
-}
-
-
-
 // const putCommand = async (id, command) => {
 //     try {
 //       const url = baseURL + id
@@ -41,6 +10,7 @@ const helperPostCommand = () => {
 //     }
 //       // trigger dom refresh
 //   }
+
 const delCommand = async (id) => {
   try {
     const url = baseURL + '/' + id
@@ -84,25 +54,19 @@ commandListSection.classList.add("bg-gray-400")
 
 const logValue = (event) => {
     // console.log(`value: ${commandInputAdd.value}`)
-    console.log(event.currentTarget.command)
 }
 
-// buttonAdd.command = "commandInputAdd.value"
-
-// console.log(`textcontent: ${commandInputAdd.textContent}`)
-
-const fooCommand = async () => {
+const postCommand = async () => {
     try {
       const url = baseURL + "commands"
       const res = await axios.post(url, { command: commandInputAdd.value })
-      console.log(`🟢 putCommand()`)
+      console.log(`🟢 postCommand()`)
     } catch (error) {
-      console.log(`🔴 putCommand(${error})`)
+      console.log(`🔴 postCommand(${error})`)
     }
       // trigger dom refresh
   }
-  buttonAdd.addEventListener('click', fooCommand)
-
+  buttonAdd.addEventListener('click', postCommand)
 
 const getCommands = async () => {
     try {
@@ -123,7 +87,6 @@ const getCommands = async () => {
 
 getCommands()
 
-
 const spawnCommand = async (command) => {
     const object = {
         command: command
@@ -132,6 +95,7 @@ const spawnCommand = async (command) => {
       const res = await axios.post(`${baseURL}spawn`, object)
       console.log(`🟢 spawnCommand(): ${res.data}`)
       console.log(`typof: ${typeof (res.data)}`)
+      // this is where data is reflected in the view
       output.textContent = `${res.data}`
       return res.data
   } catch (error) {
