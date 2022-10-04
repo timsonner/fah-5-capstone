@@ -120,6 +120,7 @@ const getCommands = async () => {
         buttonEditCommand.textContent = "Edit"
         const editHelper = () => {
             putCommand(element.id, inputEditCommand.value)
+            commandList.innerHTML = ""
             getCommands()
         }
         buttonEditCommand.addEventListener('click', editHelper)
