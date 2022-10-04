@@ -41,7 +41,8 @@ headingSection.appendChild(heading)
 // output section
 const outputSection = document.createElement('section')
 docBody.appendChild(outputSection)
-const output = document.createElement('h3')
+const output = document.createElement('p')
+output.classList.add("text-lg")
 outputSection.appendChild(output)
 outputSection.classList.add('bg-blue-400')
 // commandList section
@@ -68,7 +69,8 @@ const spawnCommand = async (command) => {
     console.log(`🟢 spawnCommand(): ${res.data}`)
     console.log(`typof: ${typeof res.data}`)
     // this is where data is reflected in the view
-    output.textContent += `${res.data}` + '\n'
+      output.textContent += `${res.data}`
+      
     return res.data
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
@@ -106,7 +108,7 @@ const getCommands = async () => {
       commandListItem.textContent = element.command
 
       const buttonDeleteCommand = document.createElement('button')
-      commandListItem.appendChild(buttonDeleteCommand)
+      commandList.appendChild(buttonDeleteCommand)
       buttonDeleteCommand.textContent = 'Delete'
       const delHelper = () => {
         delCommand(element.id)
