@@ -13,7 +13,7 @@ const baseURL = document.location
 
 const delCommand = async (id) => {
   try {
-    const url = baseURL + '/' + id
+    const url = baseURL + id
     const res = await axios.delete(url, id)
     console.log(`🟢 removeCommand()`)
   } catch (error) {
@@ -48,6 +48,7 @@ commandInputAdd.setAttribute("placeholder", "Add a command")
 const buttonAdd = document.createElement('button')
 commandListSection.appendChild(buttonAdd)
 buttonAdd.textContent = "Add"
+// list
 const commandList = document.createElement('ul')
 commandListSection.appendChild(commandList)
 commandListSection.classList.add("bg-gray-400")
@@ -76,6 +77,12 @@ const getCommands = async () => {
         const commandListItem = document.createElement('li')
           commandList.appendChild(commandListItem)
           commandListItem.textContent = JSON.stringify(element.command)
+          const buttonDeleteCommand = document.createElement('button')
+          buttonDeleteCommand.textContent = "Delete"
+          const delHelper = () => {
+              delCommand(element.id)
+          }
+          buttonDeleteCommand.addEventListener('click', delHelper)
       })
         console.log(`🟢 getCommands(): ${res.data}`)
         console.table(res.data)
