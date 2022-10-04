@@ -99,7 +99,6 @@ const getCommands = async () => {
     res.data.forEach((element) => {
       // create view using element
         const commandListItem = document.createElement('li')
-        commandList.innerHTML = ""
       commandList.appendChild(commandListItem)
     //   commandListItem.textContent = JSON.stringify(element.command)
               commandListItem.textContent = element.command
