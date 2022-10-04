@@ -13,104 +13,109 @@ const baseURL = document.location
 
 const delCommand = async (id) => {
   try {
-    const url = baseURL + "commands/" + id
+    const url = baseURL + 'commands/' + id
     const res = await axios.delete(url, id)
     console.log(`🟢 removeCommand()`)
   } catch (error) {
     console.log(`🔴 removeCommand(${error})`)
   }
-    // trigger dom refresh
+  // trigger dom refresh
 }
 // document body
 const docBody = document.querySelector('body')
-docBody.classList.add("flex", "flex-col", "justify-center", "font-mono")
+docBody.classList.add('flex', 'flex-col', 'justify-center', 'font-mono')
 // heading section
 const headingSection = document.createElement('section')
-headingSection.classList.add("flex", "flex-col", "justify-center", "bg-black", "px-8")
+headingSection.classList.add(
+  'flex',
+  'flex-col',
+  'justify-center',
+  'bg-black',
+  'px-8'
+)
 docBody.appendChild(headingSection)
 const heading = document.createElement('h2')
 heading.textContent = 'FAH-5-Capstone'
-heading.classList.add("text-green-500", "font-thin")
+heading.classList.add('text-green-500', 'font-thin')
 headingSection.appendChild(heading)
 // output section
 const outputSection = document.createElement('section')
 docBody.appendChild(outputSection)
 const output = document.createElement('h3')
 outputSection.appendChild(output)
-outputSection.classList.add("bg-blue-400")
+outputSection.classList.add('bg-blue-400')
 // commandList section
 const commandListSection = document.createElement('section')
 docBody.appendChild(commandListSection)
 // add a command
 const commandInputAdd = document.createElement('input')
 commandListSection.appendChild(commandInputAdd)
-commandInputAdd.setAttribute("placeholder", "Add a command")
+commandInputAdd.setAttribute('placeholder', 'Add a command')
 const buttonAdd = document.createElement('button')
 commandListSection.appendChild(buttonAdd)
-buttonAdd.textContent = "Add"
+buttonAdd.textContent = 'Add'
 // list
 const commandList = document.createElement('ul')
 commandListSection.appendChild(commandList)
-commandListSection.classList.add("bg-gray-400")
+commandListSection.classList.add('bg-gray-400')
 
 const logValue = (event) => {
-    // console.log(`value: ${commandInputAdd.value}`)
+  // console.log(`value: ${commandInputAdd.value}`)
 }
 
 const postCommand = async () => {
-    try {
-      const url = baseURL + "commands"
-      const res = await axios.post(url, { command: commandInputAdd.value })
-      console.log(`🟢 postCommand()`)
-    } catch (error) {
-      console.log(`🔴 postCommand(${error})`)
-    }
-      // trigger dom refresh
+  try {
+    const url = baseURL + 'commands'
+    const res = await axios.post(url, { command: commandInputAdd.value })
+    console.log(`🟢 postCommand()`)
+  } catch (error) {
+    console.log(`🔴 postCommand(${error})`)
   }
-  buttonAdd.addEventListener('click', postCommand)
+  // trigger dom refresh
+}
+buttonAdd.addEventListener('click', postCommand)
 
 const getCommands = async () => {
-    try {
-      let res = await axios.get(`${baseURL}commands`)
-      res.data.forEach((element) => {
-        // create view using element
-        const commandListItem = document.createElement('li')
-          commandList.appendChild(commandListItem)
-          commandListItem.textContent = JSON.stringify(element.command)
-          const buttonDeleteCommand = document.createElement('button')
-          commandList.appendChild(buttonDeleteCommand)
-          buttonDeleteCommand.textContent = "Delete"
-          const delHelper = () => {
-              delCommand(element.id)
-          }
-          buttonDeleteCommand.addEventListener('click', delHelper)
-      })
-        console.log(`🟢 getCommands(): ${res.data}`)
-        console.table(res.data)
-      //   return res.data
-    } catch (error) {
-      console.log(`🔴 getCommands(): ${error}`)
-    }
+  try {
+    let res = await axios.get(`${baseURL}commands`)
+    res.data.forEach((element) => {
+      // create view using element
+      const commandListItem = document.createElement('li')
+      commandList.appendChild(commandListItem)
+      commandListItem.textContent = JSON.stringify(element.command)
+      const buttonDeleteCommand = document.createElement('button')
+      commandList.appendChild(buttonDeleteCommand)
+      buttonDeleteCommand.textContent = 'Delete'
+      const delHelper = () => {
+        delCommand(element.id)
+      }
+      buttonDeleteCommand.addEventListener('click', delHelper)
+    })
+    console.log(`🟢 getCommands(): ${res.data}`)
+    console.table(res.data)
+    //   return res.data
+  } catch (error) {
+    console.log(`🔴 getCommands(): ${error}`)
   }
+}
 
 getCommands()
 
 const spawnCommand = async (command) => {
-    const object = {
-        command: command
-    }
+  const object = {
+    command: command,
+  }
   try {
-      const res = await axios.post(`${baseURL}spawn`, object)
-      console.log(`🟢 spawnCommand(): ${res.data}`)
-      console.log(`typof: ${typeof (res.data)}`)
-      // this is where data is reflected in the view
-      output.textContent = `${res.data}`
-      return res.data
+    const res = await axios.post(`${baseURL}spawn`, object)
+    console.log(`🟢 spawnCommand(): ${res.data}`)
+    console.log(`typof: ${typeof res.data}`)
+    // this is where data is reflected in the view
+    output.textContent = `${res.data}`
+    return res.data
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
   }
-    // trigger dom refresh
+  // trigger dom refresh
 }
 
 const foo = spawnCommand('uname')
-
