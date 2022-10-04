@@ -1,15 +1,15 @@
 const baseURL = document.location
 
-// const putCommand = async (id, command) => {
-//     try {
-//       const url = baseURL + id
-//       const res = await axios.put(url, { command: command })
-//       console.log(`🟢 putCommand()`)
-//     } catch (error) {
-//       console.log(`🔴 putCommand(${error})`)
-//     }
-//       // trigger dom refresh
-//   }
+const putCommand = async (id, command) => {
+    try {
+      const url = baseURL + id
+      const res = await axios.put(url, { command: command })
+      console.log(`🟢 putCommand()`)
+    } catch (error) {
+      console.log(`🔴 putCommand(${error})`)
+    }
+      // trigger dom refresh
+  }
 
 const delCommand = async (id) => {
   try {
@@ -75,6 +75,7 @@ const postCommand = async () => {
 }
 buttonAdd.addEventListener('click', postCommand)
 
+// this func actually contains all the command list elements in the ui
 const getCommands = async () => {
   try {
     let res = await axios.get(`${baseURL}commands`)
@@ -89,7 +90,17 @@ const getCommands = async () => {
       const delHelper = () => {
         delCommand(element.id)
       }
-      buttonDeleteCommand.addEventListener('click', delHelper)
+        buttonDeleteCommand.addEventListener('click', delHelper)
+        const inputEditCommand = document.createElement('input')
+        commandList.appendChild(inputEditCommand)
+        inputEditCommand.setAttribute("placeholder", "Edit command...")
+        const buttonEditCommand = document.createElement('button')
+        commandList.appendChild(buttonEditCommand)
+        buttonEditCommand.textContent = "Edit"
+        const editHelper = () => {
+    putCommand(element.id, inputEditCommand.value)
+        }
+        buttonEditCommand.addEventListener('click', editHelper)
     })
     console.log(`🟢 getCommands(): ${res.data}`)
     console.table(res.data)
