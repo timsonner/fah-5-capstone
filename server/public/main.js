@@ -98,7 +98,8 @@ const getCommands = async () => {
     let res = await axios.get(`${baseURL}commands`)
     res.data.forEach((element) => {
       // create view using element
-      const commandListItem = document.createElement('li')
+        const commandListItem = document.createElement('li')
+        commandList.innerHTML = ""
       commandList.appendChild(commandListItem)
     //   commandListItem.textContent = JSON.stringify(element.command)
               commandListItem.textContent = element.command
