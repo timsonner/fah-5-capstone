@@ -106,7 +106,7 @@ const getCommands = async () => {
       commandListItem.textContent = element.command
 
       const buttonDeleteCommand = document.createElement('button')
-      commandList.appendChild(buttonDeleteCommand)
+      commandListItem.appendChild(buttonDeleteCommand)
       buttonDeleteCommand.textContent = 'Delete'
       const delHelper = () => {
         delCommand(element.id)
