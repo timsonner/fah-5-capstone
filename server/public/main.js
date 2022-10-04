@@ -13,7 +13,7 @@ const baseURL = document.location
 
 const delCommand = async (id) => {
   try {
-    const url = baseURL + id
+    const url = baseURL + "commands" + id
     const res = await axios.delete(url, id)
     console.log(`🟢 removeCommand()`)
   } catch (error) {
