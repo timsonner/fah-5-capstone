@@ -16,29 +16,20 @@ const postCommand = async (command) => {
   location.reload()
 }
 
-// const helperPostCommand = () => {
-//   const object = {
-//     // id: uuidv4(),
-//     // command: reference an html input element's value
-//   }
-//   try {
-//     postCommand(object)
-//     console.log(`🟢 helperPostCommand()`)
-//   } catch (error) {
-//     console.log(`🔴 helperPostCommand(): ${error}`)
-//   }
-// }
-
-const putCommand = async (id, command) => {
-  try {
-    const url = baseURL + id
-    const res = await axios.put(url, { command: command })
-    console.log(`🟢 putCommand()`)
-  } catch (error) {
-    console.log(`🔴 putCommand(${error})`)
+const helperPostCommand = () => {
+  const object = {
+    // id: uuidv4(),
+    
   }
-    // trigger dom refresh
+  try {
+    postCommand(object)
+    console.log(`🟢 helperPostCommand()`)
+  } catch (error) {
+    console.log(`🔴 helperPostCommand(): ${error}`)
+  }
 }
+
+
 
 // const putCommand = async (id, command) => {
 //     try {
@@ -93,13 +84,24 @@ commandListSection.classList.add("bg-gray-400")
 
 const logValue = (event) => {
     // console.log(`value: ${commandInputAdd.value}`)
-    console.log(event.command)
+    console.log(event.currentTarget.command)
 }
 
-buttonAdd.addEventListener('click', logValue)
-buttonAdd.command = commandInputAdd.value
+// buttonAdd.command = "commandInputAdd.value"
 
-console.log(`textcontent: ${commandInputAdd.textContent}`)
+// console.log(`textcontent: ${commandInputAdd.textContent}`)
+
+const fooCommand = async () => {
+    try {
+      const url = baseURL + "commands"
+      const res = await axios.post(url, { command: commandInputAdd.value })
+      console.log(`🟢 putCommand()`)
+    } catch (error) {
+      console.log(`🔴 putCommand(${error})`)
+    }
+      // trigger dom refresh
+  }
+  buttonAdd.addEventListener('click', fooCommand)
 
 
 const getCommands = async () => {
