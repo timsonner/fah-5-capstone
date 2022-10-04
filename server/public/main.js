@@ -94,7 +94,8 @@ buttonAdd.addEventListener('click', postCommand)
 
 // this func actually contains all the command list elements in the ui
 const getCommands = async () => {
-  try {
+    try {
+      commandList.innerHTML = ""
     let res = await axios.get(`${baseURL}commands`)
     res.data.forEach((element) => {
       // create view using element
