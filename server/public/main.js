@@ -68,7 +68,7 @@ const spawnCommand = async (command) => {
       console.log(`🟢 spawnCommand(): ${res.data}`)
       console.log(`typof: ${typeof res.data}`)
       // this is where data is reflected in the view
-      output.textContent = `${res.data}`
+      output.textContent += `${res.data}`
       return res.data
     } catch (error) {
       console.log(`🔴 spawnCommand(): ${error}`)
@@ -112,14 +112,17 @@ const getCommands = async () => {
         buttonDeleteCommand.addEventListener('click', delHelper)
         const inputEditCommand = document.createElement('input')
         commandList.appendChild(inputEditCommand)
+        // edit button
         inputEditCommand.setAttribute("placeholder", "Edit command...")
         const buttonEditCommand = document.createElement('button')
         commandList.appendChild(buttonEditCommand)
         buttonEditCommand.textContent = "Edit"
         const editHelper = () => {
-    putCommand(element.id, inputEditCommand.value)
+            putCommand(element.id, inputEditCommand.value)
+            getCommands()
         }
         buttonEditCommand.addEventListener('click', editHelper)
+        // execute button
         const buttonExecuteCommand = document.createElement('button')
         commandList.appendChild(buttonExecuteCommand)
         buttonExecuteCommand.textContent = "Execute"
