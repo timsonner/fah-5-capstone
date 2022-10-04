@@ -122,7 +122,7 @@ const getCommands = async () => {
         buttonEditCommand.addEventListener('click', editHelper)
         const buttonExecuteCommand = document.createElement('button')
         commandList.appendChild(buttonExecuteCommand)
-        buttonEditCommand.textContent = "Execute"
+        buttonExecuteCommand.textContent = "Execute"
         const spawnHelper = () => {
             spawnCommand(element.command)
         }
