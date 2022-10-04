@@ -1,15 +1,15 @@
 const baseURL = document.location
 
 const putCommand = async (id, command) => {
-    try {
-      const url = baseURL + "commands/" + id
-      const res = await axios.put(url, { command: command })
-      console.log(`🟢 putCommand()`)
-    } catch (error) {
-      console.log(`🔴 putCommand(${error})`)
-    }
-      // trigger dom refresh
+  try {
+    const url = baseURL + 'commands/' + id
+    const res = await axios.put(url, { command: command })
+    console.log(`🟢 putCommand()`)
+  } catch (error) {
+    console.log(`🔴 putCommand(${error})`)
   }
+  // trigger dom refresh
+}
 
 const delCommand = async (id) => {
   try {
@@ -60,21 +60,21 @@ commandListSection.appendChild(commandList)
 commandListSection.classList.add('bg-gray-400')
 
 const spawnCommand = async (command) => {
-    const object = {
-      command: command,
-    }
-    try {
-      const res = await axios.post(`${baseURL}spawn`, object)
-      console.log(`🟢 spawnCommand(): ${res.data}`)
-      console.log(`typof: ${typeof res.data}`)
-      // this is where data is reflected in the view
-      output.textContent += `${res.data}`
-      return res.data
-    } catch (error) {
-      console.log(`🔴 spawnCommand(): ${error}`)
-    }
-    // trigger dom refresh
+  const object = {
+    command: command,
   }
+  try {
+    const res = await axios.post(`${baseURL}spawn`, object)
+    console.log(`🟢 spawnCommand(): ${res.data}`)
+    console.log(`typof: ${typeof res.data}`)
+    // this is where data is reflected in the view
+    output.textContent += `${res.data}` + '\n'
+    return res.data
+  } catch (error) {
+    console.log(`🔴 spawnCommand(): ${error}`)
+  }
+  // trigger dom refresh
+}
 
 const logValue = (event) => {
   // console.log(`value: ${commandInputAdd.value}`)
@@ -84,9 +84,9 @@ const postCommand = async () => {
   try {
     const url = baseURL + 'commands'
     const res = await axios.post(url, { command: commandInputAdd.value })
-      console.log(`🟢 postCommand()`)
-      commandList.innerHTML = ""
-getCommands()
+    console.log(`🟢 postCommand()`)
+    commandList.innerHTML = ''
+    getCommands()
   } catch (error) {
     console.log(`🔴 postCommand(${error})`)
   }
@@ -96,48 +96,47 @@ buttonAdd.addEventListener('click', postCommand)
 
 // this func actually contains all the command list elements in the ui
 const getCommands = async () => {
-    try {
-      commandList.innerHTML = ""
+  try {
+    commandList.innerHTML = ''
     let res = await axios.get(`${baseURL}commands`)
     res.data.forEach((element) => {
       // create view using element
-        const commandListItem = document.createElement('li')
+      const commandListItem = document.createElement('li')
       commandList.appendChild(commandListItem)
-    //   commandListItem.textContent = JSON.stringify(element.command)
-              commandListItem.textContent = element.command
+      commandListItem.textContent = element.command
 
       const buttonDeleteCommand = document.createElement('button')
       commandList.appendChild(buttonDeleteCommand)
       buttonDeleteCommand.textContent = 'Delete'
       const delHelper = () => {
-          delCommand(element.id)
-          commandList.innerHTML = ""
-getCommands()
+        delCommand(element.id)
+        commandList.innerHTML = ''
+        getCommands()
       }
-        buttonDeleteCommand.addEventListener('click', delHelper)
-        const inputEditCommand = document.createElement('input')
-        commandList.appendChild(inputEditCommand)
-        // edit button
-        inputEditCommand.setAttribute("placeholder", "Edit command...")
-        const buttonEditCommand = document.createElement('button')
-        commandList.appendChild(buttonEditCommand)
-        buttonEditCommand.textContent = "Edit"
-        const editHelper = () => {
-            putCommand(element.id, inputEditCommand.value)
-            commandList.innerHTML = ""
-            getCommands()
-        }
-        buttonEditCommand.addEventListener('click', editHelper)
-        // execute button
-        const buttonExecuteCommand = document.createElement('button')
-        commandList.appendChild(buttonExecuteCommand)
-        buttonExecuteCommand.textContent = "Execute"
-        const spawnHelper = () => {
-            spawnCommand(element.command)
-        }
-buttonExecuteCommand.addEventListener('click', spawnHelper)
+      buttonDeleteCommand.addEventListener('click', delHelper)
+      const inputEditCommand = document.createElement('input')
+      commandList.appendChild(inputEditCommand)
+      // edit button
+      inputEditCommand.setAttribute('placeholder', 'Edit command...')
+      const buttonEditCommand = document.createElement('button')
+      commandList.appendChild(buttonEditCommand)
+      buttonEditCommand.textContent = 'Update'
+      const updateHelper = () => {
+        putCommand(element.id, inputEditCommand.value)
+        commandList.innerHTML = ''
+        getCommands()
+      }
+      buttonEditCommand.addEventListener('click', updateHelper)
+      // execute button
+      const buttonExecuteCommand = document.createElement('button')
+      commandList.appendChild(buttonExecuteCommand)
+      buttonExecuteCommand.textContent = 'Execute'
+      const spawnHelper = () => {
+        spawnCommand(element.command)
+      }
+      buttonExecuteCommand.addEventListener('click', spawnHelper)
     })
-    
+
     console.log(`🟢 getCommands(): ${res.data}`)
     console.table(res.data)
     //   return res.data
