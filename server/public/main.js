@@ -2,7 +2,7 @@ const baseURL = document.location
 
 const putCommand = async (id, command) => {
     try {
-      const url = baseURL + id
+      const url = baseURL + "commands/" + id
       const res = await axios.put(url, { command: command })
       console.log(`🟢 putCommand()`)
     } catch (error) {
