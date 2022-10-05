@@ -69,8 +69,9 @@ const spawnCommand = async (command) => {
     console.log(`🟢 spawnCommand(): ${res.data}`)
     console.log(`typeof: ${typeof res.data}`)
     // this is where data is reflected in the view
-      output.textContent += `\r\n ${res.data}`
-    
+      output.textContent += `${res.data}`
+      const newLine = document.createElement('br')
+      outputSection.appendChild(newLine)
     return res.data
   } catch (error) {
     console.log(`🔴 spawnCommand(): ${error}`)
