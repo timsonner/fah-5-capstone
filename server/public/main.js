@@ -69,7 +69,7 @@ const spawnCommand = async (command) => {
     console.log(`🟢 spawnCommand(): ${res.data}`)
     console.log(`typeof: ${typeof res.data}`)
     // this is where data is reflected in the view
-      output.textContent += `${res.data}\r\n`
+      output.textContent += `\r\n ${res.data}`
     
     return res.data
   } catch (error) {
