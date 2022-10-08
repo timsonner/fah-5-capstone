@@ -37,10 +37,6 @@ module.exports = {
         res.send(error)
         return
       }
-    // console.log(data)
-    // res.send(data)
-    // res.status(200).send(commands)
-
   },
   insertCommand: async (req, res) => {
     const { command } = req.body
@@ -99,14 +95,6 @@ const { command } =  req.body
               console.log(`child process exited with code ${code}`)
           })
       }
-      // try {
-      //   console.log(output)
-      //   res.send(output)
-      // } catch (error) {
-      //   console.log(error)
-      //   res.send(error)
-      // }
-    
   makeSystemCall(command)
   }
 }

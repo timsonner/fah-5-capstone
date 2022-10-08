@@ -8,7 +8,6 @@ const putCommand = async (id, command) => {
   } catch (error) {
     console.log(`🔴 putCommand(${error})`)
   }
-  // trigger dom refresh
 }
 
 const delCommand = async (id) => {
@@ -19,7 +18,6 @@ const delCommand = async (id) => {
   } catch (error) {
     console.log(`🔴 removeCommand(${error})`)
   }
-  // trigger dom refresh
 }
 // document body
 const docBody = document.querySelector('body')
@@ -85,6 +83,7 @@ const postCommand = async () => {
       console.log(`🟢 postCommand()`)
         // trigger dom refresh
     commandList.innerHTML = ''
+    commandInputAdd.value = ''
     getCommands()
   } catch (error) {
     console.log(`🔴 postCommand(${error})`)
